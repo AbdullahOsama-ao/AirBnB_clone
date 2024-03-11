@@ -115,7 +115,7 @@ class HBNBCommand(cmd.Cmd):
             setattr(models.storage.all()[key], args[2], args[3])
             models.storage.all()[key].save()
         except Exception as e:
-            print("* no instance found **")
+            print("** no instance found **")
 
     def emptyline(self):
         """ method to handle empty lines """
