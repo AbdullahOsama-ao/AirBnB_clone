@@ -121,6 +121,17 @@ class HBNBCommand(cmd.Cmd):
         """ method to handle empty lines """
         return
 
+    def defualt(self, line):
+        """ method to handle default """
+        commands = ["all", "show", "destroy", "update", "create"]
+        args = line.split(".")
+        if len(args) > 1:
+            if args[1] in commands:
+                args[1] = args[1] + " " + args[2]
+                self.onecmd(args[1])
+                return
+        print("*** Unknown syntax: {}".format(line))
+
     def do_quit(self, line):
         """ method to handle quiting """
         return True
