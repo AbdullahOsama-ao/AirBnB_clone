@@ -31,21 +31,31 @@ class HBNBCommand(cmd.Cmd):
     }
 
     def default(self, line):
-        """ handles the defualt methode """
+        """ method to handle default """
         commands = ["all", "show", "destroy", "update", "create", "count"]
         args = line.split(".")
-        cmnd = args[1][0:-2]
+        cmnd = args[1].split("(")
         if len(args) < 2:
             print("** class name missing **")
             return
         if args[0] not in HBNBCommand.__classes:
             print("** class doesn't exist **")
             return
-        if args[1][0:-2] not in commands:
+        if cmnd[0] not in commands:
             print("** command doesn't exist **")
+            print(cmnd)
             return
-        if cmnd in commands:
-            self.onecmd(cmnd + " " + args[0])
+        if cmnd[0] in commands:
+            if cmnd[0] == "destroy" or cmnd[0] == "show":
+                self.onecmd(cmnd[0] + " " + args[0] + " " + cmnd[1][1:-2])
+                return
+            if cmnd[0] == "update":
+                atr = " ".join([i[1:-1] for i in cmnd[1][0:-1].split(", ")])
+                self.onecmd(cmnd[0] + " " + args[0] + " " + atr)
+                return
+            else:
+                self.onecmd(cmnd + " " + args[0])
+
         else:
             print("*** Unknown syntax: {}".format(line))
 
