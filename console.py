@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
 
     def default(self, line):
         """ handles the defualt methode """
-        commands = ["all", "show", "destroy", "update", "create"]
+        commands = ["all", "show", "destroy", "update", "create", "count"]
         args = line.split(".")
         cmnd = args[1][0:-2]
         if len(args) < 2:
@@ -48,6 +48,14 @@ class HBNBCommand(cmd.Cmd):
             self.onecmd(cmnd + " " + args[0])
         else:
             print("*** Unknown syntax: {}".format(line))
+
+    def do_count(self, line):
+        """ method to handle count """
+        count = 0
+        for k, v in models.storage.all().items():
+            if line in k:
+                count += 1
+        print(count)
 
     def do_create(self, line):
         """ method to handle create """
