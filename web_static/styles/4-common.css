@@ -1,7 +1,12 @@
+html,
 body {
 	color: #484848;
 	font-size: 14px;
 	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	min-height: 100vh;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
 }
 
 ul {
