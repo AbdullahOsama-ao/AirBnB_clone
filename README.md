@@ -1,1 +1,6 @@
-readme for the AirBnB clone project
+# AirBnB Web Design
+
+## Used Tools:
+
+HTML
+CSS
