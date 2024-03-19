@@ -1,5 +1,5 @@
-#AirBnB Web Design
+# AirBnB Web Design
 
-##Used Tools:
+## Used Tools:
 - HTML
 - CSS
